@@ -1,4 +1,4 @@
-import './App.css' B;
+import './App.css';
 import Products from './Project/fakeStore/Products';
 import Cart from './Project/fakeStore/Cart';
 import Details from './Project/fakeStore/Details';
