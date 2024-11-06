@@ -32,6 +32,11 @@ const CartListSlice = createSlice({
 
         }
     },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          serializableCheck: false,  // Disable serializability checks
+          immutableCheck: false,     // Disable immutability checks
+        }),
 })
 
 export const { addProduct , delProduct } = CartListSlice.actions
