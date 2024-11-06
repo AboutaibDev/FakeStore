@@ -1,10 +1,10 @@
 name: Deploy Website to Netlify
 
-# This workflow triggers on pushes to the main branch (or whichever branch you want)
+# This workflow triggers on pushes to the master branch (or whichever branch you want)
 on:
   push:
     branches:
-      - main  # You can change 'main' to the branch you use for production (e.g., 'master')
+      - master  # You can change 'master' to the branch you use for production (e.g., 'main')
 
 jobs:
   build-and-deploy:
@@ -22,19 +22,23 @@ jobs:
           node-version: 20  # The Node.js version to use
           cache: "npm"  # Cache npm dependencies to speed up builds
 
-      # Step 3: Install Netlify CLI globally
-      - name: Install Netlify CLI
-        run: npm install netlify-cli@17.10.1 -g
-
-      # Step 4: Install project dependencies (using npm ci for consistent installs)
+      # Step 3: Install project dependencies (using npm ci for consistent installs)
       - name: Install dependencies
         run: npm ci
 
+      # Step 4: Run Tests (this is where your testing scripts go)
+      - name: Run tests
+        run: npm run test  # Replace 'npm run test' with your actual test script if it's different
+      
       # Step 5: Build the project (you must have a build script in package.json)
       - name: Build project
         run: npm run build
 
-      # Step 6: Deploy to Netlify
+      # Step 6: Install Netlify CLI globally
+      - name: Install Netlify CLI
+        run: npm install netlify-cli@17.10.1 -g
+
+      # Step 7: Deploy to Netlify
       - name: Deploy to Netlify
         id: netlify_deploy
         run: |
