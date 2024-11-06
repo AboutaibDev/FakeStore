@@ -33,7 +33,10 @@ jobs:
       # Step 5: Build the project (you must have a build script in package.json)
       - name: Build project
         run: npm run build
-
+      
+      - name: Install Babel dependencies
+        run: npm install --save-dev @babel/preset-env babel-jest
+      
       # Step 6: Install Netlify CLI globally
       - name: Install Netlify CLI
         run: npm install netlify-cli@17.10.1 -g
