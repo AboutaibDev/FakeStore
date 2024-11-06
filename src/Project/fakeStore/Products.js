@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { addProduct } from "./Redux/Slices/CartSlice";
 import { fetchAll } from "./Redux/Calls/apiCalls";
 import Gif from './imgs/loading.gif';
-import { productLoading } from "./Redux/Slices/productSlice";
 
 function Products(){
     const productsList = useSelector((state)=>state.products.productsList)
@@ -14,7 +13,7 @@ function Products(){
 
     useEffect(()=>{
         dispatch(fetchAll(dispatch))
-    },[])
+    })
     
     function cartAdd(product){
         dispatch(addProduct(product))

@@ -16,7 +16,7 @@ function Details(){
     useEffect(()=>{
         console.log(loading)
         dispatch(fetchOne(id,dispatch))
-    },[])
+    })
 
     function cartAdd(product){
         dispatch(addProduct(product))
@@ -31,7 +31,7 @@ function Details(){
         : 
         <div className="d-flex">
             <div>
-                <img src={product.image} alt="image" />
+                <img src={product.image} alt="product image" />
             </div>
             <div>
                 <h2>Title : {product.title}</h2>
