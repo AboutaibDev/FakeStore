@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom"
 import { addProduct } from "./Redux/Slices/CartSlice"
 import { fetchOne } from "./Redux/Calls/apiCalls"
 import Gif from './imgs/loading.gif';
-import { productLoading } from "./Redux/Slices/productSlice"
 
 function Details(){
     const product = useSelector((state)=>state.products.oneProduct)
@@ -31,7 +30,7 @@ function Details(){
         : 
         <div className="d-flex">
             <div>
-                <img src={product.image} alt="product image" />
+                <img src={product.image} alt="product" />
             </div>
             <div>
                 <h2>Title : {product.title}</h2>

@@ -30,7 +30,7 @@ function Cart(){
             [...cartList].map((product,index)=>(
                 <tr key={index}>
                     <th>{index+1}</th>
-                    <td><Link to={`/Details/${product.id}`}><img height='100px'  src={product.image} alt="product image" /></Link></td>
+                    <td><Link to={`/Details/${product.id}`}><img height='100px'  src={product.image} alt="product" /></Link></td>
                     <td>{product.title}</td>
                     <td>{product.units}</td>
                     <td>{product.price}$ x {product.units} = {(product.price*product.units).toFixed(2)}$</td>
