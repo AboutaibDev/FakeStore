@@ -1,14 +1,13 @@
 name: Deploy Website to Netlify
 
-# This workflow triggers on pushes to the master branch (or whichever branch you want)
 on:
   push:
     branches:
-      - master  # You can change 'master' to the branch you use for production (e.g., 'main')
+      - master  # Or change this to your target branch (e.g., 'main')
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest  # Use the latest version of Ubuntu for the runner
+    runs-on: ubuntu-latest
 
     steps:
       # Step 1: Check out the repository code
@@ -20,32 +19,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20  # The Node.js version to use
-          cache: "npm"  # Cache npm dependencies to speed up builds
+          cache: "npm"
 
-      # Step 3: Install project dependencies (using npm ci for consistent installs)
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Run Tests (this is where your testing scripts go)
+      # Step 4: Install Babel and Jest dependencies
+      - name: Install Babel and Jest dependencies
+        run: npm install --save-dev @babel/preset-env babel-jest
+
+      # Step 5: Run tests
       - name: Run tests
-        run: npm run test  # Replace 'npm run test' with your actual test script if it's different
-      
-      # Step 5: Build the project (you must have a build script in package.json)
+        run: npm run test  # Assuming 'test' script is set in your package.json
+
+      # Step 6: Build the project
       - name: Build project
         run: npm run build
-      
-      - name: Install Babel dependencies
-        run: npm install --save-dev @babel/preset-env babel-jest
-      
-      # Step 6: Install Netlify CLI globally
+
+      # Step 7: Install Netlify CLI globally
       - name: Install Netlify CLI
         run: npm install netlify-cli@17.10.1 -g
 
-      # Step 7: Deploy to Netlify
+      # Step 8: Deploy to Netlify
       - name: Deploy to Netlify
         id: netlify_deploy
         run: |
           netlify deploy \
-            --dir dist \  # The build output directory (update if your project uses another directory like 'build')
-            --site ${{ secrets.NETLIFY_SITE_ID }} \  # Netlify Site ID (stored as a GitHub secret)
-            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}  # Netlify AUTH Token (stored as a GitHub secret)
+            --dir dist \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
