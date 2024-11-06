@@ -29,6 +29,10 @@ jobs:
       - name: Install Babel and Jest dependencies
         run: npm install --save-dev @babel/preset-env babel-jest
 
+              # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm i
+
       # Step 5: Run tests
       - name: Run tests
         run: npm run test  # Assuming 'test' script is set in your package.json
