@@ -13,7 +13,7 @@ function Products(){
 
     useEffect(()=>{
         dispatch(fetchAll(dispatch))
-    })
+    },[])
     
     function cartAdd(product){
         dispatch(addProduct(product))
