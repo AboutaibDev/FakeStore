@@ -13,9 +13,9 @@ function Details(){
     const {id} = useParams()
 
     useEffect(()=>{
-        console.log(loading)
+        // console.log(loading)
         dispatch(fetchOne(id,dispatch))
-    },[])
+    },[id])
 
     function cartAdd(product){
         dispatch(addProduct(product))
