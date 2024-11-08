@@ -14,7 +14,7 @@ function Details(){
 
     useEffect(()=>{
         // console.log(loading)
-        dispatch(fetchOne(id,dispatch))
+        dispatch(fetchOne(id))
     },[id])
 
     function cartAdd(product){
