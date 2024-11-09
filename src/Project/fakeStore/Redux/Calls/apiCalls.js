@@ -15,3 +15,5 @@ export const fetchOne = createAsyncThunk('products/fetchOne',async (id,thunkAPI)
     thunkAPI.dispatch(productLoading(false))
     return res.data
 })
+
+// salam
