@@ -39,7 +39,7 @@ jobs:
 
       # step idk
       - name: Build Docker image
-        run: docker build -t fakeShop:${{ github.sha }} .
+        run: docker build -t fakeshop:${{ github.sha }} .
       
       # to push to Docker Hub (requires Docker Hub login)
       - name: Log in to Docker Hub
@@ -50,7 +50,7 @@ jobs:
 
       # to push to Docker Hub
       - name: Push Docker image
-        run: docker push fakeShop:${{ github.sha }}
+        run: docker push fakeshop:${{ github.sha }}
       
       # # Step 7: Install Netlify CLI globally
       # - name: Install Netlify CLI
