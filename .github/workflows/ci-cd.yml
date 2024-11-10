@@ -39,7 +39,7 @@ jobs:
 
       # step idk
       - name: Build Docker image
-        run: docker build -t fakeshop:${{ github.sha }} .
+        run: docker build -t roomoff/fakeshop:${{ github.sha }} .
       
       # to push to Docker Hub (requires Docker Hub login)
       - name: Log in to Docker Hub
