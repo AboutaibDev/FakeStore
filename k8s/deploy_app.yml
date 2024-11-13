@@ -1,0 +1,21 @@
+- name: Deploy Application to Kubernetes
+  hosts: localhost
+  gather_facts: no
+  collections:
+    - community.kubernetes
+
+  vars:
+    kubeconfig: "{{ lookup('env', 'KUBECONFIG') | default('~/.kube/config', true) }}"
+
+  tasks:
+    - name: Deploy Kubernetes Deployment
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig }}"
+        state: present
+        definition: "{{ lookup('file', './k8s-deployment.yml') }}"
+
+    - name: Deploy Kubernetes Service
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig }}"
+        state: present
+        definition: "{{ lookup('file', './k8s-service.yml') }}"

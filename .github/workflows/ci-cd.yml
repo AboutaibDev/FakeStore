@@ -53,11 +53,11 @@ jobs:
       - name: Push Docker image
         run: docker push roomoff/fakeshop:${{ github.sha }}
       
-      # # Step 7: Install Netlify CLI globally
+      ## Step 7: Install Netlify CLI globally
       # - name: Install Netlify CLI
       #   run: npm install netlify-cli@17.10.1 -g
 
-      # # Step 8: Deploy to Netlify
+      ## Step 8: Deploy to Netlify
       # - name: Deploy to Netlify
       #   id: netlify_deploy
       #   run: |
