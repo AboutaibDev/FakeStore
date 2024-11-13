@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: fakeshop
-        image: roomoff/fakeshop:7490ddd042deac2491ad8ac947dad20e01dcc295
+        image: roomoff/fakeshop:latest
         ports:
         - containerPort: 80     # Port on which the container listens
