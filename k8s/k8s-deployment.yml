@@ -5,7 +5,7 @@ metadata:
   name: fakeshop-deployment   # Name of the deployment
   namespace: default
 spec:
-  replicas: 1                # Number of instances/pods to run
+  replicas: 1           # Number of instances/pods to run
   selector:
     matchLabels:
       app: fakeshop           # Label for selecting pods
